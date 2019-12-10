@@ -1,32 +1,32 @@
 import React,{Component} from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Loader from './component/Loader/Loader';
 import Table from './component/Table/Table.js';
-import TableButton from './component/TableButton/TableButton.js';
+import AddTrainer from './component/trainer/AddTrainer';
+import EditTrainer from './component/trainer/EditTrainer';
+import ListTrainer from './component/trainer/ListTrainer';
 
-class App extends Component {
-	constructor() {
-		super()
-
-		this.state = {
-			data: [
-				{"id":123,"First":"Leroy","Last":"Jaques","Contact":"TSteele@ipsum.ly", "isHere1":"н", "isHere2":"н", "isHere3":"н", "isHere4":"+"},
-				]
-		}
-	}
-
-	
-	render() {
-  	return (
-   		<div className="container">
-					
-				<Loader />
-				<Table
-				data={this.state.data}/>
-				<TableButton 
-				/>
-  		</div>
+function App() {
+  return (
+		<div className="container">
+			<Router>
+					<div className="col-md-6">
+							<h1 className="text-center" style={style}>React Trainer Application</h1>
+							<Switch>
+									<Route path="/" exact component={ListTrainer} />
+									<Route path="/trainers" component={ListTrainer} />
+									<Route path="/add-trainer" component={AddTrainer} />
+									<Route path="/edit-trainer" component={EditTrainer} />
+							</Switch>
+					</div>
+			</Router>
+		</div>
  		);
-	}
+}
+
+const style = {
+	color: 'red',
+	margin: '10px'
 }
 
 export default App;

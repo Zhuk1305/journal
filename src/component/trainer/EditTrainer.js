@@ -34,7 +34,7 @@ class EditTrainer extends Component {
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });
 
-    saveUser = (e) => {
+    saveTrainer = (e) => {
         e.preventDefault();
         let trainer = {id: this.state.id, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
         ApiService.editTrainer(trainer)
@@ -49,7 +49,7 @@ class EditTrainer extends Component {
             <div>
                 <h2 className="text-center">Edit Trainer</h2>
                 <form>
-
+									
                     <div className="form-group">
                         <label>Trainer Name:</label>
                         <input type="text" placeholder="username" name="username" className="form-control" readonly="true" defaultValue={this.state.username}/>

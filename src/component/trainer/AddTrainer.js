@@ -1,4 +1,5 @@
 import React, {Conponent, Component} from 'react';
+import ApiService from "../../service/ApiService";
 
 class AddTrainer extends Component {
 
@@ -14,9 +15,9 @@ class AddTrainer extends Component {
 	}
 	saveTrainer = (e) => {
 		e.preventDefault();
-		let user = {username: this.state.username, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
+		let trainer = {username: this.state.username, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
 		ApiService.addTrainer(trainer)
-				.then(res => {
+				.then((res) => {
 						this.setState({message : 'Trainer added successfully.'});
 						this.props.history.push('/trainer');
 				});
@@ -48,7 +49,7 @@ class AddTrainer extends Component {
 							<input placeholder="Last name" name="lastName" className="form-control" value={this.state.lastName} onChange={this.onChange}/>
 					</div>
 
-					<button className="btn btn-success" onClick={this.saveUser}>Save</button>
+					<button className="btn btn-success" onClick={this.saveTrainer}>Save</button>
 			</form>
 	</div>
 		);

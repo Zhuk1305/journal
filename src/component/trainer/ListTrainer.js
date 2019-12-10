@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
 
-class ListUserComponent extends Component {
+class ListTrainer extends Component {
 
     constructor(props) {
         super(props)
@@ -12,19 +12,19 @@ class ListUserComponent extends Component {
         this.deleteTrainer = this.deleteTrainer.bind(this);
         this.editTrainer = this.editTrainer.bind(this);
         this.addTrainer = this.addTrainer.bind(this);
-        this.reloadTrainerList = this.reloadTrainerList.bind(this);
+        //this.reloadTrainerList = this.reloadTrainerList.bind(this);
     }
 
-    componentDidMount() {
-        this.reloadTrainerList();
-    }
+    // componentDidMount() {
+    //     this.reloadTrainerList();
+    // }
 
-    reloadTrainerList() {
-        ApiService.fetchTrainers()
-            .then((res) => {
-                this.setState({trinaers: res.data.result})
-            });
-    }
+    // reloadTrainerList() {
+    //     ApiService.fetchTrainers()
+    //         .then((res) => {
+    //             this.setState({trainers: res.data.result})
+    //         });
+    // }
 
     deleteTrainer(trainerId) {
         ApiService.deleteTrainer(trainerId)
@@ -49,7 +49,7 @@ class ListUserComponent extends Component {
         return (
             <div>
                 <h2 className="text-center">Trainer Details</h2>
-                <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addUser()}> Add Trainer</button>
+                <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addTrainer()}> Add Trainer</button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -64,7 +64,7 @@ class ListUserComponent extends Component {
                     <tbody>
                         {
                             this.state.trainers.map(
-                        user =>
+                        trainer =>
                                     <tr key={trainer.id}>
                                         <td>{trainer.firstName}</td>
                                         <td>{trainer.lastName}</td>
