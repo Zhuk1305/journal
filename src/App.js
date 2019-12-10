@@ -14,14 +14,7 @@ class App extends Component {
 		}
 	}
 
-	addId = (id) => {
-		this.setState ({
-			data: [
-				...this.state.data,
-				{"id":id,"first":"first","last":"last","contact":"TSteele@ipsum.ly", "isHere1":"н", "isHere2":"н", "isHere3":"н", "isHere4":"+"}
-			]
-		})
-	}
+	
 	render() {
   	return (
    		<div className="container">
@@ -30,7 +23,6 @@ class App extends Component {
 				<Table
 				data={this.state.data}/>
 				<TableButton 
-					addId={this.addId}
 				/>
   		</div>
  		);
