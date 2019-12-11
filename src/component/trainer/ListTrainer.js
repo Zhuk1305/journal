@@ -57,8 +57,6 @@ class ListTrainer extends Component {
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>UserName</th>
-                            <th>Age</th>
-                            <th>Salary</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -1,12 +1,17 @@
 ul {
 	list-style-type: none;
 }
+li {
+	margin-bottom: 20px;
+}
 .nav__trainer {
 	font-size:20px;
 }
 .nav__group {
 	font-size: 14px;
+	margin-bottom: 5px;
 }
 .nav__wrapper {
+	width: 30%;
 	text-decoration: none;
 }
