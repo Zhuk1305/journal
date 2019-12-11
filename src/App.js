@@ -5,11 +5,12 @@ import Table from './component/Table/Table.js';
 import AddTrainer from './component/trainer/AddTrainer';
 import EditTrainer from './component/trainer/EditTrainer';
 import ListTrainer from './component/trainer/ListTrainer';
+import Navbar from './component/NavbarTrainer/Navbar';
 
 function App() {
   return (
 		<div className="container">
-			<Router>
+			{/* <Router>
 					<div className="col-md-6">
 							<h1 className="text-center" style={style}>React Trainer Application</h1>
 							<Switch>
@@ -19,7 +20,8 @@ function App() {
 									<Route path="/edit-trainer" component={EditTrainer} />
 							</Switch>
 					</div>
-			</Router>
+			</Router> */}
+				<Navbar />
 		</div>
  		);
 }

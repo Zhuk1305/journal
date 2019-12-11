@@ -1,0 +1,12 @@
+ul {
+	list-style-type: none;
+}
+.nav__trainer {
+	font-size:20px;
+}
+.nav__group {
+	font-size: 14px;
+}
+.nav__wrapper {
+	text-decoration: none;
+}

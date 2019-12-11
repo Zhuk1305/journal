@@ -17,9 +17,9 @@ class AddTrainer extends Component {
 		e.preventDefault();
 		let trainer = {username: this.state.username, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
 		ApiService.addTrainer(trainer)
-				.then((res) => {
+				.then(res => {
 						this.setState({message : 'Trainer added successfully.'});
-						this.props.history.push('/trainer');
+						this.props.history.push('/trainers');
 				});
 	}
 	onChange = (e) =>

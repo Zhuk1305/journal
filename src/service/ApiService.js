@@ -1,27 +1,27 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL = 'http://localhost:8080/users';
+const TRAINER_API_BASE_URL = 'http://localhost:8080/trainers';
 
 class ApiService {
 
-    fetchUsers() {
-        return axios.get(USER_API_BASE_URL);
+    fetchTrainers() {
+        return axios.get(TRAINER_API_BASE_URL);
     }
 
-    fetchUserById(userId) {
-        return axios.get(USER_API_BASE_URL + '/' + userId);
+    fetchTrainerById(trainerId) {
+        return axios.get(TRAINER_API_BASE_URL + '/' + trainerId);
     }
 
-    deleteUser(userId) {
-        return axios.delete(USER_API_BASE_URL + '/' + userId);
+    deleteTrainer(trainerId) {
+        return axios.delete(TRAINER_API_BASE_URL + '/' + trainerId);
     }
 
-    addUser(user) {
-        return axios.post(""+USER_API_BASE_URL, user);
+    addTrainer(trainer) {
+        return axios.post(""+TRAINER_API_BASE_URL, trainer);
     }
 
-    editUser(user) {
-        return axios.put(USER_API_BASE_URL + '/' + user.id, user);
+    editTrainer(trainer) {
+        return axios.put(TRAINER_API_BASE_URL + '/' + trainer.id, trainer);
     }
 
 }

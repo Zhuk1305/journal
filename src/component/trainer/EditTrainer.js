@@ -20,7 +20,7 @@ class EditTrainer extends Component {
 
     loadTrainer() {
         ApiService.fetchTrainerById(window.localStorage.getItem("trainerId"))
-            .then((res) => {
+            .then(res => {
                 let trainer = res.data.result;
                 this.setState({
                 id: trainer.id,
@@ -36,8 +36,8 @@ class EditTrainer extends Component {
 
     saveTrainer = (e) => {
         e.preventDefault();
-        let trainer = {id: this.state.id, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
-        ApiService.editTrainer(trainer)
+        let trainers = {id: this.state.id, password: this.state.password, firstName: this.state.firstName, lastName: this.state.lastName};
+        ApiService.editTrainer(trainers)
             .then(res => {
                 this.setState({message : 'Trainer added successfully.'});
                 this.props.history.push('/trainer');
