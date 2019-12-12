@@ -1,36 +1,58 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './Table.css';
 
-const Table = (props) => {
+const data = {
+	student: [
+		{
+			id:1,
+			firstName: "ivan",
+			lastName: "zhuk",
+			contact: "+37529 666 66 66",
+			yb:2013,
+			payment:"yes",
+			comment:"good"
+		}
+	]
+}
+class Table extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			data: data
+		}
+	}
+	render() {
 	return (
+		<div>
+			<h2 className="text-center">group1, вт19</h2>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
       <th scope="col">Contact</th>
-      <th scope="col">Вторник, 03</th>
-      <th scope="col">Вторник, 10</th>
-      <th scope="col">Вторник, 17</th>
-      <th scope="col">Вторник, 24</th>
+      <th scope="col">YoB</th>
+      <th scope="col">Payment</th>
+      <th scope="col">Comment</th>
     </tr>
   </thead>
   <tbody>
-		{ props.data.map(item =>(
+		{ this.state.data.student.map(item =>(
     <tr key={item.id}>
       <td>{item.id}</td>
-      <td>{item.First}</td>
-      <td>{item.Last}</td>
-			<td>{item.Contact}</td>
-			<td>{item.isHere1}</td>
-			<td>{item.isHere2}</td>
-			<td>{item.isHere3}</td>
-			<td>{item.isHere4}</td>
+      <td>{item.firstName}</td>
+      <td>{item.lastName}</td>
+			<td>{item.contact}</td>
+			<th>{item.yb}</th>
+      <th>{item.payment}</th>
+      <th>{item.comment}</th>
 			</tr>
 		))}
 		</tbody>
 </table>
+</div>
 	)}
+}
 
 export default Table;

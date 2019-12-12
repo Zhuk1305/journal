@@ -40,7 +40,7 @@ class EditTrainer extends Component {
         ApiService.editTrainer(trainers)
             .then(res => {
                 this.setState({message : 'Trainer added successfully.'});
-                this.props.history.push('/trainer');
+                this.props.history.push('/trainers');
             });
     }
 

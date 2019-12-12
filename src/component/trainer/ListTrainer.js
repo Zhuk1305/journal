@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ApiService from "../../service/ApiService";
+import "./trainer.css"
 
 class ListTrainer extends Component {
 
@@ -31,8 +32,9 @@ class ListTrainer extends Component {
            .then(res => {
                this.setState({message : 'Trainer deleted successfully.'});
                this.setState({trainer: this.state.trainers.filter(trainer => trainer.id !== trainerId)});
-           })
-
+								
+							})
+					 
     }
 
     editTrainer(id) {
@@ -50,13 +52,15 @@ class ListTrainer extends Component {
             <div>
                 <h2 className="text-center">Trainer Details</h2>
                 <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addTrainer()}> Add Trainer</button>
-                <table className="table table-striped">
+                <table className="table table-bordered">
                     <thead>
                         <tr>
-                            <th className="hidden">Id</th>
+                            <th>Id</th>
                             <th>FirstName</th>
                             <th>LastName</th>
                             <th>UserName</th>
+														<th>Delete</th>
+														<th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,12 +68,15 @@ class ListTrainer extends Component {
                             this.state.trainers.map(
                         trainer =>
                                     <tr key={trainer.id}>
+																				<td>{trainer.id}</td>
                                         <td>{trainer.firstName}</td>
                                         <td>{trainer.lastName}</td>
                                         <td>{trainer.username}</td>
                                         <td>
                                             <button className="btn btn-success" onClick={() => this.deleteTrainer(trainer.id)}> Delete</button>
-                                            <button className="btn btn-success" onClick={() => this.editTrainer(trainer.id)} style={{marginLeft: '20px'}}> Edit</button>
+                                           </td>
+																					 <td>
+																						 <button className="btn btn-success" onClick={() => this.editTrainer(trainer.id)}> Edit</button>
                                         </td>
                                     </tr>
                             )

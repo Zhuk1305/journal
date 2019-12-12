@@ -1,0 +1,16 @@
+.header-wrapper {
+	background:rgb(59, 59, 88);
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+}
+img {
+	width: 100px;
+	height: 70px;
+}
+.btn__login {
+	margin-top: 20px;
+	background-color: rgb(160, 160, 165);
+	height: 40px;
+	width: 100px;
+}

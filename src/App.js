@@ -7,22 +7,27 @@ import AddTrainer from './component/trainer/AddTrainer';
 import EditTrainer from './component/trainer/EditTrainer';
 import ListTrainer from './component/trainer/ListTrainer';
 import Navbar from './component/NavbarTrainer/Navbar';
+import Header from './component/Header/Header.js';
 
 function App() {
   return (
-		<div className="container">
+		<div className="containers">
+			<div className="header">
+			<Header />
+			</div>
+			<div className="main">
 			<Navbar />
 			<Router>
 					<div className="wrapper">
 								<Switch>
-									<Route path="/" exact component={ListTrainer} />
+									<Route path="/" exact component={Table} />
 									<Route path="/trainers" component={ListTrainer} />
 									<Route path="/add-trainer" component={AddTrainer} />
 									<Route path="/edit-trainer" component={EditTrainer} />
 							</Switch>
 					</div>
 			</Router>
-			
+			</div>
 		</div>
  		);
 }

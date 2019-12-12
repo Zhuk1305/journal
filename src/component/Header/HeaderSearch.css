@@ -1,0 +1,12 @@
+.search {
+	border: 1px solid black;
+	width: 500px;
+	padding: 5px;
+}
+.search__block {
+	margin-top: 20px;
+}
+.btn__search {
+	border: 1px solid black;
+	padding: 5px;
+}
