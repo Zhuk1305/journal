@@ -1,33 +1,38 @@
 import React,{Component} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './App.css'
 import Loader from './component/Loader/Loader';
-import Table from './component/Table/Table.js';
-import AddTrainer from './component/trainer/AddTrainer';
-import EditTrainer from './component/trainer/EditTrainer';
-import ListTrainer from './component/trainer/ListTrainer';
+import Group from './component/Group/Group';
+import AddTrainer from './component/Trainer/AddTrainer';
+import EditTrainer from './component/Trainer/EditTrainer';
+import ListTrainer from './component/Trainer/ListTrainer';
 import Navbar from './component/NavbarTrainer/Navbar';
 import Header from './component/Header/Header.js';
-
+import Main from './component/Main/Main';
 function App() {
-  return (
+
+	return (
 		<div className="containers">
+		
+			<Router>
 			<div className="header">
 			<Header />
 			</div>
 			<div className="main">
 			<Navbar />
-			<Router>
 					<div className="wrapper">
 								<Switch>
-									<Route path="/" exact component={Table} />
+									
+									<Route path="/" exact component={Main} />
+									<Route path="/main" exact component={Main} />
+									<Route path="/group" component={Group} />
 									<Route path="/trainers" component={ListTrainer} />
 									<Route path="/add-trainer" component={AddTrainer} />
 									<Route path="/edit-trainer" component={EditTrainer} />
 							</Switch>
 					</div>
-			</Router>
 			</div>
+			</Router>
 		</div>
  		);
 }

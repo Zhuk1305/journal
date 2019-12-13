@@ -14,3 +14,7 @@ img {
 	height: 40px;
 	width: 100px;
 }
+.mainLink {
+	display: flex;
+	flex-direction: column;
+}

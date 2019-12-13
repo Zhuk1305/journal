@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import './Table.css';
+import './Group.css';
 
 const data = {
 	student: [
@@ -14,7 +14,7 @@ const data = {
 		}
 	]
 }
-class Table extends Component {
+class Group extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -34,7 +34,8 @@ class Table extends Component {
       <th scope="col">Contact</th>
       <th scope="col">YoB</th>
       <th scope="col">Payment</th>
-      <th scope="col">Comment</th>
+			<th>Delete</th>
+			<th>Edit</th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +47,12 @@ class Table extends Component {
 			<td>{item.contact}</td>
 			<th>{item.yb}</th>
       <th>{item.payment}</th>
-      <th>{item.comment}</th>
+			<td>
+          <button className="btn btn-success"> Delete</button>
+          </td>
+					<td>
+					<button className="btn btn-success"> Edit</button>
+        </td>
 			</tr>
 		))}
 		</tbody>
@@ -55,4 +61,4 @@ class Table extends Component {
 	)}
 }
 
-export default Table;
+export default Group;
