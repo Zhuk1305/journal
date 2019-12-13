@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const TRAINER_API_BASE_URL = 'http://localhost:8080/trainers';
-
+const GROUP_API_BASE_URL = 'http://localhost:8080/groups';
 class ApiService {
 
     fetchTrainers() {
@@ -22,7 +22,10 @@ class ApiService {
 
     editTrainer(trainer) {
         return axios.put(TRAINER_API_BASE_URL + '/' + trainer.id, trainer);
-    }
+		}
+		addGroup(group) {
+			return axios.post(""+GROUP_API_BASE_URL, group);
+	}
 
 }
 

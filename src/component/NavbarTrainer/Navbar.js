@@ -93,9 +93,7 @@ class Navbar extends Component {
 			isOpened: !this.state.isOpened
 		})
 	}
-	mainPage() {
-		this.props.history.push("/")
-	}
+	
 	
 	render() {
 	
@@ -112,8 +110,6 @@ class Navbar extends Component {
 							</li>
 						)}
 				</ul>
-				<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.mainPage()}> Main</button>
-	
 			</div>
 	);
 	}

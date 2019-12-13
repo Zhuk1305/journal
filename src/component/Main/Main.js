@@ -16,7 +16,7 @@ showTrainerList() {
 	this.props.history.push('/trainers')
 }
 showGroupList() {
-	this.props.history.push('/group')
+	this.props.history.push('/groups')
 }
 showStudentList() {
 	this.props.history.push('/students')
