@@ -10,6 +10,7 @@ import Navbar from './component/NavbarTrainer/Navbar';
 import Header from './component/Header/Header.js';
 import Main from './component/Main/Main';
 import AddGroup from './component/Group/AddGroup';
+import AddStudent from './component/Student/AddStudent';
 function App() {
 
 	return (
@@ -26,8 +27,10 @@ function App() {
 									
 									<Route path="/" exact component={Main} />
 									<Route path="/main" exact component={Main} />
-									<Route path="/groups" component={Group} />
+									<Route path="/group" component={Group} />
 									<Route path="/add-group" component={AddGroup} />
+									<Route path="/add-student" component={AddStudent} />
+									
 									<Route path="/trainers" component={ListTrainer} />
 									<Route path="/add-trainer" component={AddTrainer} />
 									<Route path="/edit-trainer" component={EditTrainer} />

@@ -7,7 +7,7 @@ const data = {
 			id:1,
 			firstName: "ivan",
 			lastName: "zhuk",
-			contact: "+37529 666 66 66",
+			contact: "Alexander: +37529 666 66 66",
 			yb:2013,
 			payment:"yes",
 			comment:"good"
@@ -21,10 +21,14 @@ class Group extends Component {
 			data: data
 		}
 	}
+	addStudent() {
+		this.props.history.push('/add-student');
+	}
 	render() {
 	return (
 		<div>
 			<h2 className="text-center">group1, вт19</h2>
+	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addStudent()}> Add Student</button>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -57,6 +61,7 @@ class Group extends Component {
 		))}
 		</tbody>
 </table>
+
 </div>
 	)}
 }

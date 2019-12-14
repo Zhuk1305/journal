@@ -7,6 +7,7 @@
 img {
 	width: 100px;
 	height: 70px;
+	margin-bottom: 5px;
 }
 .btn__login {
 	margin-top: 20px;
@@ -17,4 +18,7 @@ img {
 .mainLink {
 	display: flex;
 	flex-direction: column;
+}
+.btn__mainLink {
+	width: 100px;
 }
