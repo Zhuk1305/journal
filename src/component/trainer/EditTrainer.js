@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ApiService from "../../service/ApiService";
 
 class EditTrainer extends Component {
 
@@ -22,18 +21,7 @@ class EditTrainer extends Component {
     }
 
     loadTrainer() {
-        ApiService.fetchTrainerById(window.localStorage.getItem("trainerId"))
-            .then(res => {
-                let trainer = res.data.result;
-                this.setState({
-                id: trainer.id,
-                firstName: trainer.firstName,
-								lastName: trainer.lastName,
-								phone: trainer.phone,
-								email: trainer.email,
-								birthday: trainer.birthday
-                })
-            });
+
     }
 
     onChange = (e) =>
@@ -42,10 +30,8 @@ class EditTrainer extends Component {
     saveTrainer = (e) => {
         e.preventDefault();
          let trainers = {id: this.state.id, firstName: this.state.firstName, lastName: this.state.lastName, phone: this.state.phone, email: this.state.email, birthday: this.state.birthday};
-         ApiService.editTrainer(trainers)
-             .then(res => {
-                this.props.history.push('/trainers');
-        });
+         
+					this.props.history.push('/trainers')
     }
 
     render() {

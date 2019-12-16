@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ApiService from "../../service/ApiService";
 import "./trainer.css"
 
 class ListTrainer extends Component {
@@ -8,14 +7,6 @@ class ListTrainer extends Component {
         super(props)
         this.state = {
 					trainers : []
-            // trainers: [{
-						// 	id:1,
-						// 	firstName: "ivan",
-						// 	lastName: "zhuk",
-						// 	phone: "+37529 666 66 66",
-						// 	email: "vaneczhuk@gmail.com",
-						// 	birthday: "13.05.1999"
-						// }]
         }
         this.deleteTrainer = this.deleteTrainer.bind(this);
         this.editTrainer = this.editTrainer.bind(this);
@@ -29,19 +20,10 @@ class ListTrainer extends Component {
 
     reloadTrainerList() {
 			
-        ApiService.fetchTrainers()
-            .then((res) => {
-                this.setState({trainers: res.data.result})
-				    });
     }
 
     deleteTrainer(trainerId) {
-        ApiService.deleteTrainer(trainerId)
-           .then(res => {
-               this.setState({trainer: this.state.trainers.filter(trainer => trainer.id !== trainerId)});
-								
-							})
-					 
+        
     }
 
     editTrainer(id) {

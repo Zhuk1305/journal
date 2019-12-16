@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ApiService from "../../service/ApiService";
 
 
 class AddTrainer extends Component {
@@ -18,11 +17,9 @@ class AddTrainer extends Component {
 	saveTrainer = (e) => {
 		e.preventDefault();
 		 let trainer = {firstName: this.state.firstName, lastName: this.state.lastName, phone: this.state.phone, email: this.state.email, birthday: this.state.birthday};
-		ApiService.addTrainer(trainer)
-				.then(res => {
-				this.props.history.push('/trainers');
-				});
-	}
+		
+		 this.props.history.push('/trainers')
+		}
 	onChange = (e) =>
 				this.setState({ [e.target.name]: e.target.value })
 
@@ -53,7 +50,7 @@ class AddTrainer extends Component {
 
 					<div className="form-group">
 							<label>Birthday:</label>
-							<input placeholder="Birthday" name="birthday" className="form-control" value={this.state.lastName} onChange={this.onChange}/>
+							<input placeholder="Birthday" name="birthday" className="form-control" value={this.state.birthday} onChange={this.onChange}/>
 					</div>
 
 					<button className="btn btn-success" onClick={this.saveTrainer}>Save</button>

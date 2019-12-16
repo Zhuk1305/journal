@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ApiService from "../../service/ApiService";
 
 class AddGroup extends Component {
 	constructor(props) {
@@ -13,10 +12,7 @@ class AddGroup extends Component {
 	saveGroup = (e) => {
 		e.preventDefault();
 		 let group = {name: this.state.name, nameTrainer:this.state.nameTrainer}
-		// ApiService.addGroup(group)
-		// 				.then(res => {
-							this.props.history.push('/group')
-						// })
+					this.props.history.push('/group')
 	}
 	onChange = (e) =>
 	this.setState({[e.target.name]: e.target.value});
