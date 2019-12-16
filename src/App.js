@@ -10,33 +10,32 @@ import Navbar from './component/NavbarTrainer/Navbar';
 import Header from './component/Header/Header.js';
 import Main from './component/Main/Main';
 import AddGroup from './component/Group/AddGroup';
+import ListStudent from './component/Student/ListStudent';
 import AddStudent from './component/Student/AddStudent';
 function App() {
 
 	return (
 		<div className="containers">
-		
 			<Router>
-			<div className="header">
-			<Header />
-			</div>
-			<div className="main">
-			<Navbar />
-					<div className="wrapper">
-								<Switch>
-									
-									<Route path="/" exact component={Main} />
-									<Route path="/main" exact component={Main} />
-									<Route path="/group" component={Group} />
-									<Route path="/add-group" component={AddGroup} />
-									<Route path="/add-student" component={AddStudent} />
-									
-									<Route path="/trainers" component={ListTrainer} />
-									<Route path="/add-trainer" component={AddTrainer} />
-									<Route path="/edit-trainer" component={EditTrainer} />
-							</Switch>
-					</div>
-			</div>
+				<div className="header">
+				<Header />
+				</div>
+				<div className="main">
+				<Navbar />
+						<div className="wrapper">
+									<Switch>
+										<Route path="/" exact component={Main} />
+										<Route path="/main" exact component={Main} />
+										<Route path="/group" component={Group} />
+										<Route path="/add-group" component={AddGroup} />
+										<Route path="/students" component={ListStudent} />
+										<Route path="/add-student" component={AddStudent} />
+										<Route path="/trainers" component={ListTrainer} />
+										<Route path="/add-trainer" component={AddTrainer} />
+										<Route path="/edit-trainer" component={EditTrainer} />
+								</Switch>
+						</div>
+				</div>
 			</Router>
 		</div>
  		);

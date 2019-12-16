@@ -84,28 +84,22 @@ class Navbar extends Component {
 
 		this.state = {
 			data: data,
-			isOpened:false
 		};
-	}
-
-	toggleState() {
-		this.setState({ 
-			isOpened: !this.state.isOpened
-		})
-	}
-	
-	
+	}	
 	render() {
 	
 	return (
 		<div className="nav__wrapper">
-				<ul>{this.state.data.nodes.map(item=>
+				<ul>
+					{this.state.data.nodes.map(item=>
 					<li key={item.id} className="nav__trainer">
 						{item.name}
 						{item.group ? item.group.map(group => 
-							<li key={group.id} className="nav__group">
+							<ul>
+								<li key={group.id} className="nav__group">
 								{group.name}
 							</li>
+							</ul>
 							) : undefined }
 							</li>
 						)}

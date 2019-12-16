@@ -4,7 +4,7 @@ class HeaderSearch extends Component {
 	render() { 
 		return (
 			<div className="search__block">
-  <form class="form__search">
+  <form className="form__search">
     <input className="search" type="search" placeholder="Search"/>
     <button className="btn__search" type="submit">Search</button>
   </form>

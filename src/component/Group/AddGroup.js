@@ -15,7 +15,7 @@ class AddGroup extends Component {
 		 let group = {name: this.state.name, nameTrainer:this.state.nameTrainer}
 		// ApiService.addGroup(group)
 		// 				.then(res => {
-							this.props.history.push('/groups')
+							this.props.history.push('/group')
 						// })
 	}
 	onChange = (e) =>

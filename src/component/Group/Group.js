@@ -28,8 +28,11 @@ class Group extends Component {
 	return (
 		<div>
 			<h2 className="text-center">group1, вт19</h2>
-	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addStudent()}> Add Student</button>
-<table class="table table-bordered">
+	<div className="btn__wrapper">
+		<button className="btn btn-danger" onClick={() => this.addStudent()}> Add Student</button>
+		<button className="btn btn-danger" onClick={() => this.addStudent()}> Delete Group</button>
+	</div>
+<table className="table table-bordered">
   <thead>
     <tr>
       <th scope="col">#</th>

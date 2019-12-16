@@ -7,8 +7,15 @@ class ListTrainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            trainers: [],
-            message: null
+					trainers : []
+            // trainers: [{
+						// 	id:1,
+						// 	firstName: "ivan",
+						// 	lastName: "zhuk",
+						// 	phone: "+37529 666 66 66",
+						// 	email: "vaneczhuk@gmail.com",
+						// 	birthday: "13.05.1999"
+						// }]
         }
         this.deleteTrainer = this.deleteTrainer.bind(this);
         this.editTrainer = this.editTrainer.bind(this);
@@ -21,16 +28,16 @@ class ListTrainer extends Component {
     }
 
     reloadTrainerList() {
+			
         ApiService.fetchTrainers()
             .then((res) => {
                 this.setState({trainers: res.data.result})
-            });
+				    });
     }
 
     deleteTrainer(trainerId) {
         ApiService.deleteTrainer(trainerId)
            .then(res => {
-               this.setState({message : 'Trainer deleted successfully.'});
                this.setState({trainer: this.state.trainers.filter(trainer => trainer.id !== trainerId)});
 								
 							})
@@ -42,9 +49,9 @@ class ListTrainer extends Component {
         this.props.history.push('/edit-trainer');
     }
 
-    addTrainer() {
-        window.localStorage.removeItem("trainerId");
-        this.props.history.push('/add-trainer');
+    addTrainer () {
+      window.localStorage.removeItem("trainerId");
+			this.props.history.push('/add-trainer');
     }
 
     render() {
@@ -58,7 +65,9 @@ class ListTrainer extends Component {
                             <th>Id</th>
                             <th>FirstName</th>
                             <th>LastName</th>
-                            <th>UserName</th>
+														<th>Phone</th>
+														<th>Email</th>
+                            <th>Birthday</th>
 														<th>Delete</th>
 														<th>Edit</th>
                         </tr>
@@ -71,8 +80,11 @@ class ListTrainer extends Component {
 																				<td>{trainer.id}</td>
                                         <td>{trainer.firstName}</td>
                                         <td>{trainer.lastName}</td>
-                                        <td>{trainer.username}</td>
-                                        <td>
+                                        <td>{trainer.phone}</td>
+ 
+                                        <td>{trainer.email}</td>
+                                        <td>{trainer.birthday}</td>
+																				 <td>
                                             <button className="btn btn-success" onClick={() => this.deleteTrainer(trainer.id)}> Delete</button>
                                            </td>
 																					 <td>

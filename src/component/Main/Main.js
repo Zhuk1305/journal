@@ -15,26 +15,24 @@ addStudent() {
 showTrainerList() {
 	this.props.history.push('/trainers')
 }
-showGroupList() {
-	this.props.history.push('/groups')
-}
 showStudentList() {
 	this.props.history.push('/students')
 }
 render () {
 	
 	return (
-		<div>
+		<div className="main__container">
  
 
   <h2 className="text-center">Welcome to hell!</h2>
-  <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addTrainer()}> Add Trainer</button>
-	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addGroup()}> Add Group</button>
-	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.addStudent()}> Add Student</button>
-  <button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.showTrainerList()}> Trainer List</button>
-	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.showGroupList()}> Group List</button>
-	<button className="btn btn-danger" style={{width:'100px'}} onClick={() => this.showStudentList()}> Student List</button>
-
+		<div className="btn__main-wrapper">
+			<button className="btn btn-danger" onClick={() => this.addTrainer()}> Add Trainer</button>
+			<button className="btn btn-danger" onClick={() => this.addGroup()}> Add Group</button>
+			<button className="btn btn-danger" onClick={() => this.addStudent()}> Add Student</button>
+			<button className="btn btn-danger" onClick={() => this.showTrainerList()}> Trainer List</button>
+			<button className="btn btn-danger" onClick={() => this.showStudentList()}> Student List</button>
+		</div>
+		<img className="main__img" src="https://miro.medium.com/max/2800/0*MAzzaAq2S2oYMn_6.jpg"/>
  </div>
 )
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const TRAINER_API_BASE_URL = 'http://localhost:8080/trainers';
+const TRAINER_API_BASE_URL = 'http://localhost:8080/trainer';
 const GROUP_API_BASE_URL = 'http://localhost:8080/groups';
 class ApiService {
 
