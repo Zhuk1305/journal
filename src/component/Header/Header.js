@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
+import React from 'react';
 import HeaderSearch from './HeaderSearch';
 import './Header.css';
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 function Header() {

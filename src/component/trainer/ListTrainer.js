@@ -6,6 +6,8 @@ class ListTrainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
+					error: null,
+      isLoaded: false,
 					trainers : []
         }
         this.deleteTrainer = this.deleteTrainer.bind(this);
@@ -19,11 +21,39 @@ class ListTrainer extends Component {
     }
 
     reloadTrainerList() {
-			
+			fetch("http://localhost:8080/trainer")
+      .then(res => res.json())
+      .then(trainers => {
+          this.setState({
+            isLoaded: true,
+						trainers
+					         });
+        },
+        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
     }
 
     deleteTrainer(trainerId) {
-        
+			fetch("http://localhost:8080/trainer/id",{method: 'DELETE'})
+			.then(res => res.json())
+			.then(res => {
+				this.setState({trainers: this.state.trainers.filter(
+					trainer => trainer.id !== trainerId)})
+			},
+			(error) => {
+				this.setState({
+					isLoaded: true,
+					error
+				});
+			}
+			)
     }
 
     editTrainer(id) {
@@ -37,6 +67,12 @@ class ListTrainer extends Component {
     }
 
     render() {
+			const { error, isLoaded, trainers } = this.state;
+			if (error) {
+				return <div>Ошибка: {error.message}</div>;
+			} else if (!isLoaded) {
+				return <div>Загрузка...</div>;
+			} else {
         return (
             <div>
                 <h2 className="text-center">Trainer Details</h2>
@@ -56,14 +92,13 @@ class ListTrainer extends Component {
                     </thead>
                     <tbody>
                         {
-                            this.state.trainers.map(
+                            trainers.map(
                         trainer =>
                                     <tr key={trainer.id}>
 																				<td>{trainer.id}</td>
                                         <td>{trainer.firstName}</td>
                                         <td>{trainer.lastName}</td>
                                         <td>{trainer.phone}</td>
- 
                                         <td>{trainer.email}</td>
                                         <td>{trainer.birthday}</td>
 																				 <td>
@@ -80,7 +115,7 @@ class ListTrainer extends Component {
             </div>
         );
     }
-
+	}
 }
 
 export default ListTrainer;
