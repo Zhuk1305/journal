@@ -2,23 +2,33 @@ import React, {Component} from 'react';
 
 
 class AddTrainer extends Component {
-
 	constructor(props) {
 		super(props)
-		this.state= {
+		this.state = {
 			firstName: '',
 			lastName: '',
 			phone:'',
 			email:'',
-			birthday:''
+			birthday:'' 
 		}
 		this.saveTrainer = this.saveTrainer.bind(this)
 	}
 	saveTrainer = (e) => {
 		e.preventDefault();
 		 let trainer = {firstName: this.state.firstName, lastName: this.state.lastName, phone: this.state.phone, email: this.state.email, birthday: this.state.birthday};
-		
-		 this.props.history.push('/trainers')
+		fetch('http://localhost:8080/trainer', {method:'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type':'application/json'}, 
+			body: JSON.stringify(trainer)})
+		 .then(res => {
+			this.props.history.push('/trainers')
+		 },
+		 (error) => {
+			this.setState({
+				error
+			});
+		})
 		}
 	onChange = (e) =>
 				this.setState({ [e.target.name]: e.target.value })
@@ -30,7 +40,7 @@ class AddTrainer extends Component {
 					<form>
 					<div className="form-group">
 							<label>First Name:</label>
-							<input placeholder="First Name" name="firstName" className="form-control" value={this.state.username} onChange={this.onChange}/>
+							<input placeholder="First Name" name="firstName" className="form-control" value={this.state.firstName} onChange={this.onChange}/>
 					</div>
 
 					<div className="form-group">

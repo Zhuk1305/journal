@@ -18,7 +18,7 @@ class ListTrainer extends Component {
 
     componentDidMount() {
         this.reloadTrainerList();
-    }
+			}
 
     reloadTrainerList() {
 			fetch("http://localhost:8080/trainer")
@@ -41,19 +41,13 @@ class ListTrainer extends Component {
     }
 
     deleteTrainer(trainerId) {
-			fetch("http://localhost:8080/trainer/id",{method: 'DELETE'})
-			.then(res => res.json())
-			.then(res => {
-				this.setState({trainers: this.state.trainers.filter(
-					trainer => trainer.id !== trainerId)})
-			},
-			(error) => {
-				this.setState({
-					isLoaded: true,
-					error
-				});
-			}
-			)
+			fetch("http://localhost:8080/trainer",
+			{method: 'DELETE',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type':'application/json'}, 
+			})
+			
     }
 
     editTrainer(id) {

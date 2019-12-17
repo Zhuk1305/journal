@@ -21,18 +21,53 @@ class EditTrainer extends Component {
     }
 
     loadTrainer() {
-
+			fetch('http://localhost:8080/trainer/'+ 
+			window.localStorage.getItem("trainerId"))
+			.then(res => res.json())
+      .then(res => {
+					
+				this.setState({
+					id: res.id,
+					firstName: res.firstName,
+					lastName: res.lastName,
+					phone: res.phone,
+					email:res.email,
+					birthday:res.birthday
+			
+					})
+        },
+        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
+        (error) => {
+          this.setState({
+            error
+          });
+        }
+      )
     }
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });
 
     saveTrainer = (e) => {
-        e.preventDefault();
-         let trainers = {id: this.state.id, firstName: this.state.firstName, lastName: this.state.lastName, phone: this.state.phone, email: this.state.email, birthday: this.state.birthday};
-         
-					this.props.history.push('/trainers')
-    }
+		e.preventDefault();
+		 let trainer = {firstName: this.state.firstName, lastName: this.state.lastName, phone: this.state.phone, email: this.state.email, birthday: this.state.birthday};
+		fetch('http://localhost:8080/trainer/'+
+		window.localStorage.getItem("trainerId"), 
+		{method:'PUT',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type':'application/json'}, 
+			body: JSON.stringify(trainer)})
+		 .then(res => {
+			this.props.history.push('/trainers')
+		 },
+		 (error) => {
+			this.setState({
+				error
+			});
+		})
+		}
 
     render() {
         return (
