@@ -77,7 +77,7 @@ class EditTrainer extends Component {
 									
 								<div className="form-group">
 							<label>First Name:</label>
-							<input placeholder="First Name" name="firstName" className="form-control" value={this.state.username} onChange={this.onChange}/>
+							<input placeholder="First Name" name="firstName" className="form-control" value={this.state.firstName} onChange={this.onChange}/>
 					</div>
 
 					<div className="form-group">

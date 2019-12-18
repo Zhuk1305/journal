@@ -41,14 +41,18 @@ class ListTrainer extends Component {
     }
 
     deleteTrainer(trainerId) {
-			fetch("http://localhost:8080/trainer",
-			{method: 'DELETE',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type':'application/json'}, 
-			})
-			
-    }
+			fetch("http://localhost:8080/trainer/" + trainerId,
+		 {method: 'DELETE',
+		 headers: {
+			'Accept': 'application/json',
+			'Content-Type':'application/json'}
+		})
+			.then(res => {
+			this.setState({ 
+				trainers: this.state.trainers.filter(trainer => trainer.id !== trainerId)})
+	}
+ )
+}
 
     editTrainer(id) {
         window.localStorage.setItem("trainerId", id);

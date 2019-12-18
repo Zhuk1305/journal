@@ -4,21 +4,61 @@ class ListStudent extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			student: [{
-				id:1,
-				firstName: "ivan",
-				lastName: "zhuk",
-				contact: "Alexander: +37529 666 66 66",
-				yb:2013,
-				payment:"yes",
-				comment:"good"
-			}]
+			students: [],
+			isLoaded: false,
+			error: null
 		}
+		this.deleteStudent = this.deleteStudent.bind(this);
+		this.editStudent = this.editStudent.bind(this);
+		this.addStudent = this.addStudent.bind(this);
+		this.reloadStudentList = this.reloadStudentList.bind(this);
 	}
+	componentDidMount() {
+		this.reloadStudentList();
+	}
+	reloadStudentList() {
+		fetch("http://localhost:8080/student")
+		.then(res => res.json())
+		.then(students => { 
+			this.setState({
+				isLoaded: true,
+				students
+			})},
+			(error) => {
+				this.setState({
+					isLoaded: true,
+					error
+				});
+			})
+	}
+
+	deleteStudent(studentId) {
+		fetch("http://localhost:8080/student/" + studentId,
+		{method: 'DELETE',
+		headers: {
+			'Accept':'application/json',
+			'Content-Type':'application/json'
+		}})
+		.then(res => {
+			this.setState({
+			students: this.state.students.filter(student => student.id !== studentId)})
+		})
+	}
+	editStudent(id) {
+		window.localStorage.setItem("studentId", id);
+		this.props.history.push('/edit-student');
+	}
+
 	addStudent() {
 		this.props.history.push('/add-student');
 	}
 	render() {
+		const { error, isLoaded, students } = this.state;
+			if (error) {
+				return <div>Ошибка: {error.message}</div>;
+			} else if (!isLoaded) {
+				return <div>Загрузка...</div>;
+			} else {
 		return(
 			<div>
 				<h2 className="text-center">Student Details</h2>
@@ -30,28 +70,30 @@ class ListStudent extends Component {
       <th scope="col">FirstName</th>
       <th scope="col">LastName</th>
       <th scope="col">Contact</th>
-      <th scope="col">YoB</th>
-      <th scope="col">Payment</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Subscription</th>
+			<th scope="col">Group</th>
 			<th>Delete</th>
 			<th>Edit</th>
     </tr>
   </thead>
   <tbody>
 		{ 
-		this.state.student.map(
-			item =>
-    <tr key={item.id}>
-      <td>{item.id}</td>
-      <td>{item.firstName}</td>
-      <td>{item.lastName}</td>
-			<td>{item.contact}</td>
-			<th>{item.yb}</th>
-      <th>{item.payment}</th>
+		students.map(
+			student =>
+    <tr key={student.id}>
+      <td>{student.id}</td>
+      <td>{student.firstName}</td>
+      <td>{student.lastName}</td>
+			<td>{student.contact}</td>
+			<th>{student.birthday}</th>
+      <th>{student.subscription}</th>
+      <th>{student.group}</th>
 			<td>
-          <button className="btn btn-success"> Delete</button>
+          <button className="btn btn-success" onClick={() => this.deleteStudent(student.id)}> Delete</button>
           </td>
 					<td>
-					<button className="btn btn-success"> Edit</button>
+					<button className="btn btn-success" onClick={() => this.editStudent(student.id)}> Edit</button>
         </td>
 			</tr>
 		)}
@@ -60,6 +102,7 @@ class ListStudent extends Component {
 			</div>
 		)
 	}
+}
 }
 
 export default ListStudent;
