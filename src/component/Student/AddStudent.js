@@ -16,10 +16,23 @@ class AddStudent extends Component {
 
 	saveStudent = (e) => {
 		e.preventDefault();
-		let student = {firstName: this.state.firstName, lastName: this.state.lastName};
-		this.setState({student})
-		this.props.history.push('/group')
-	}
+		let student = {firstName: this.state.firstName, lastName: this.state.lastName, contact: this.state.contact, birthday: this.state.birthday};
+		fetch('http://localhost:8080/student/', 
+		{method:'POST',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type':'application/json'}, 
+			body: JSON.stringify(student)})
+		 .then(res => {
+			this.props.history.push('/students')
+		 },
+		 (error) => {
+			this.setState({
+				error
+			});
+		})
+		}
+
 	onChange = (e) =>
 				this.setState({[e.target.name]:e.target.value });
 	render() {

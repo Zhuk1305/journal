@@ -12,6 +12,8 @@ import Main from './component/Main/Main';
 import AddGroup from './component/Group/AddGroup';
 import ListStudent from './component/Student/ListStudent';
 import AddStudent from './component/Student/AddStudent';
+import EditStudent from './component/Student/EditStudent';
+
 function App() {
 
 	return (
@@ -30,6 +32,7 @@ function App() {
 										<Route path="/add-group" component={AddGroup} />
 										<Route path="/students" component={ListStudent} />
 										<Route path="/add-student" component={AddStudent} />
+										<Route path="/edit-student" component={EditStudent} />
 										<Route path="/trainers" component={ListTrainer} />
 										<Route path="/add-trainer" component={AddTrainer} />
 										<Route path="/edit-trainer" component={EditTrainer} />

@@ -7,23 +7,60 @@ class AddStudent extends Component {
 			firstName: '',
 			lastName: '',
 			group: '',
-			yb: '',
+			birthday: '',
 			payment: '',
-			comment: '',
 		}
 	this.saveStudent = this.saveStudent.bind(this)
 	this.loadStudent = this.loadStudent.bind(this)
 }
 
 componentDidMount() {
-	this.loadTrainer();
+	this.loadStudent();
+}
+loadStudent() {
+	fetch('http://localhost:8080/student/'+ 
+	window.localStorage.getItem("studentId"))
+	.then(res => res.json())
+	.then(res => {
+			
+		this.setState({
+			id: res.id,
+			firstName: res.firstName,
+			lastName: res.lastName,
+			contact: res.contact,
+			birthday:res.birthday
+	
+			})
+		},
+		// Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+		// чтобы не перехватывать исключения из ошибок в самих компонентах.
+		(error) => {
+			this.setState({
+				error
+			});
+		}
+	)
 }
 	saveStudent = (e) => {
 		e.preventDefault();
-		let student = {firstName: this.state.firstName, lastName: this.state.lastName};
-		this.setState({student})
-		this.props.history.push('/group')
-	}
+		let student = {firstName: this.state.firstName, lastName: this.state.lastName, contact: this.state.contact, birthday: this.state.birthday};
+		fetch('http://localhost:8080/student/'+
+		window.localStorage.getItem("studentId"), 
+		{method:'PUT',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type':'application/json'}, 
+			body: JSON.stringify(student)})
+		 .then(res => {
+			this.props.history.push('/students')
+		 },
+		 (error) => {
+			this.setState({
+				error
+			});
+		})
+		}
+
 	onChange = (e) =>
 				this.setState({[e.target.name]:e.target.value });
 	render() {
@@ -47,8 +84,8 @@ componentDidMount() {
 					</div>
 
 					<div className="form-group">
-							<label>Year of Birth:</label>
-							<input placeholder="Year of Birth" name="YoB" className="form-control" value={this.state.yb} onChange={this.onChange}/>
+							<label>Birthday:</label>
+							<input placeholder="Birthday" name="birthday" className="form-control" value={this.state.birthday} onChange={this.onChange}/>
 					</div>
 
 					<div className="form-group">
